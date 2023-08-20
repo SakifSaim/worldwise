@@ -5,7 +5,13 @@ import Spinner from './Spinner'
 function CityList({ cities, isLoading }) {
   if (isLoading) return <Spinner />
   console.log(cities)
-  return <ul className={styles.cityList}>list</ul>
+  return (
+    <ul className={styles.cityList}>
+      {cities.map((city) => (
+        <CityItem city={city} key={city.id} />
+      ))}
+    </ul>
+  )
 }
 
 export default CityList
