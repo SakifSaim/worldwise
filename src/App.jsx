@@ -48,7 +48,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="app" element={<AppLayout />}>
           {/* for auto opening a page on time of loading  Navigate props is used  */}
-          <Route index element={<Navigate to={'cities'} />} />
+          <Route index element={<Navigate replace to={'cities'} />} />
           <Route
             path="cities"
             element={<CityList cities={cities} isLoading={isLoading} />}
