@@ -8,7 +8,7 @@ const BASE_URL = 'http://localhost:9000'
 function CitiesProvider({ children }) {
   const [cities, setCities] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const { currentCity, setCurrentCity } = useState({})
+  const [currentCity, setCurrentCity] = useState({})
 
   useEffect(function () {
     async function fetchCities() {
@@ -28,15 +28,19 @@ function CitiesProvider({ children }) {
   }, [])
 
   // for fatching current city data from fake Api
+
   async function getCity(id) {
     try {
       setIsLoading(true)
       const res = await fetch(`${BASE_URL}/cities/${id}`)
-      const data = await res.json()
 
+      if (!res) throw new Error('error')
+      const data = await res.json()
+      if (!data) throw new Error('data error')
       setCurrentCity(data)
     } catch {
-      alert('There was an error loading data...')
+      //alert('There was an error loading data...')
+      console.log('error')
     } finally {
       setIsLoading(false)
     }

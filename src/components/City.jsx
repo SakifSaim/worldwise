@@ -1,7 +1,9 @@
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import styles from './City.module.css'
 import { useEffect } from 'react'
 import { useCities } from '../contexts/CitiesContext'
+import Spinner from './Spinner'
+import BackButton from './BackButton'
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat('en', {
@@ -15,7 +17,9 @@ function City() {
   // {useParams is used for get id of specific item/page for creating param in page rout ex: loaclhost:3000/app/city:123456}
   const { id } = useParams()
 
-  const { getCity, currentCity } = useCities()
+  console.log(id)
+
+  const { getCity, currentCity, isLoading } = useCities()
 
   useEffect(
     function () {
@@ -24,19 +28,26 @@ function City() {
     [id]
   )
 
-  // // {searchParams is used for adding addtinal search option in a routing ex: loaclhost:3000/app/city:123456?let:15545&lan:44455 }
-  // const [searchParams, setSearchParams] = useSearchParams()
+  const { cityName, emoji, date, notes } = currentCity
 
-  // const lat = searchParams.get('lat')
-  // const lng = searchParams.get('lng')
+  if (isLoading) return <Spinner />
 
   return (
-    <>
-      <h1 className={styles.city}>city {id} </h1>
-      <p>
-        Position: {lat ? `${lat} ,` : ''} {lng}{' '}
-      </p>
-    </>
+    <div className={styles.city}>
+      <div className={styles.row}>
+        <h6>City Name</h6>
+        <h3>🟢 {cityName}</h3>
+        <h6>You Went to {cityName} on </h6>
+        <p> {date} </p>
+
+        <h6>Your notes </h6>
+        <p> {notes} </p>
+        <h6>Learn More </h6>
+      </div>
+      <div>
+        <BackButton />
+      </div>
+    </div>
   )
 }
 
