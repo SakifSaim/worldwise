@@ -17,8 +17,6 @@ function City() {
   // {useParams is used for get id of specific item/page for creating param in page rout ex: loaclhost:3000/app/city:123456}
   const { id } = useParams()
 
-  console.log(id)
-
   const { getCity, currentCity, isLoading } = useCities()
 
   useEffect(
