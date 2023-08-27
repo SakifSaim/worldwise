@@ -35,6 +35,42 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
+    },
+    {
+      "cityName": "Palmela",
+      "country": "Portugal",
+      "emoji": "🇵🇹",
+      "date": "2023-08-27T09:10:15.312Z",
+      "notes": "test",
+      "position": {
+        "lat": "38.63752279228784",
+        "lng": "-8.905792236328127"
+      },
+      "id": 98443198
+    },
+    {
+      "cityName": "Arruda Dos Vinhos",
+      "country": "Portugal",
+      "emoji": "🇵🇹",
+      "date": "2023-08-27T09:10:41.261Z",
+      "notes": "This is test data",
+      "position": {
+        "lat": "38.94659331893374",
+        "lng": "-9.104919433593752"
+      },
+      "id": 98443200
+    },
+    {
+      "cityName": "Sintra",
+      "country": "Portugal",
+      "emoji": "🇵🇹",
+      "date": "2023-08-20T11:23:53.000Z",
+      "notes": "He ha ha ",
+      "position": {
+        "lat": "38.87072102699576",
+        "lng": "-9.268341064453127"
+      },
+      "id": 98443201
     }
   ]
 }

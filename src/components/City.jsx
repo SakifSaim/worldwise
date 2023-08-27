@@ -26,7 +26,8 @@ function City() {
     [id]
   )
 
-  const { cityName, emoji, date, notes } = currentCity
+  const { cityName, emoji, date, notes, position } = currentCity
+  console.log(currentCity)
 
   if (isLoading) return <Spinner />
 
@@ -41,6 +42,10 @@ function City() {
         <h6>Your notes </h6>
         <p> {notes} </p>
         <h6>Learn More </h6>
+        <p>
+          {' '}
+          <b>Lat :</b> {position.lat} &nbsp; <b>Lng :</b> {position.lng}
+        </p>
       </div>
       <div>
         <BackButton />
