@@ -38,14 +38,11 @@ function City() {
         <h3>🟢 {cityName}</h3>
         <h6>You Went to {cityName} on </h6>
         <p> {date} </p>
-
         <h6>Your notes </h6>
         <p> {notes} </p>
         <h6>Learn More </h6>
-        <p>
-          {' '}
-          <b>Lat :</b> {position.lat} &nbsp; <b>Lng :</b> {position.lng}
-        </p>
+        {/* {position ? `${position.lat} and ${position.lng}` : ''} */}
+        {position && `Lat: ${position.lat} - Lng ${position.lng}`}
       </div>
       <div>
         <BackButton />

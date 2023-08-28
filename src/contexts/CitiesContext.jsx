@@ -38,6 +38,7 @@ function CitiesProvider({ children }) {
       const data = await res.json()
       if (!data) throw new Error('data error')
       setCurrentCity(data)
+      console.log(data)
     } catch {
       //alert('There was an error loading data...')
       console.log('error')
