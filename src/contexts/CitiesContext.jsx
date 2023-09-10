@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useEffect, useReducer } from 'react'
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+} from 'react'
 
 const CitiesContext = createContext()
 const BASE_URL = 'http://localhost:9000'
@@ -92,23 +98,26 @@ function CitiesProvider({ children }) {
 
   // for fatching current city data from fake Api
 
-  async function getCity(id) {
-    if (Number(id) === currentCity.id) return
-    dispatch({ type: 'loading' })
-    try {
-      const res = await fetch(`${BASE_URL}/cities/${id}`)
+  const getCity = useCallback(
+    async function getCity(id) {
+      if (Number(id) === currentCity.id) return
+      dispatch({ type: 'loading' })
+      try {
+        const res = await fetch(`${BASE_URL}/cities/${id}`)
 
-      if (!res) throw new Error('error')
-      const data = await res.json()
+        if (!res) throw new Error('error')
+        const data = await res.json()
 
-      dispatch({ type: 'city/loaded', payload: data })
-    } catch {
-      dispatch({
-        type: 'rejected',
-        payload: 'There was an error loading City',
-      })
-    }
-  }
+        dispatch({ type: 'city/loaded', payload: data })
+      } catch {
+        dispatch({
+          type: 'rejected',
+          payload: 'There was an error loading City',
+        })
+      }
+    },
+    [currentCity.id]
+  )
 
   // for adding data into city list
   async function createCity(newCity) {
